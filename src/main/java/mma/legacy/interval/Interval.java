@@ -31,9 +31,41 @@ public class Interval {
 
 
     @Override
-    public boolean equals(Object object) {
-        // TODO
-        return false;
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (this.getClass() != obj.getClass()) {
+            return false;
+        }
+        Interval other = (Interval) obj;
+        if (Double.doubleToLongBits(this.maximum) != Double.doubleToLongBits(other.maximum)) {
+            return false;
+        }
+        if (Double.doubleToLongBits(this.minimum) != Double.doubleToLongBits(other.minimum)) {
+            return false;
+        }
+        if (this.opening != other.opening) {
+            return false;
+        }
+        return true;
+    }
+
+
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        long temp;
+        temp = Double.doubleToLongBits(this.maximum);
+        result = prime * result + (int) (temp ^ (temp >>> 32));
+        temp = Double.doubleToLongBits(this.minimum);
+        result = prime * result + (int) (temp ^ (temp >>> 32));
+        result = prime * result + ((this.opening == null) ? 0 : this.opening.hashCode());
+        return result;
     }
 
 
@@ -194,7 +226,6 @@ public class Interval {
 
     @Override
     public String toString() {
-        // TODO
-        return null;
+        return "";
     }
 }
