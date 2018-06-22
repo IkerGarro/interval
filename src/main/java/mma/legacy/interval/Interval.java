@@ -116,7 +116,6 @@ public class Interval {
                     case UNOPENED :
                         return (minimumIncluded) && (maximumIncluded);
                     default :
-                        assert false;
                         return false;
                 }
             case LEFT_OPENED :
@@ -166,11 +165,9 @@ public class Interval {
                         return (minimumIncluded || this.minimum == interval.minimum)
                                 && (maximumIncluded || this.maximum == interval.maximum);
                     default :
-                        assert false;
                         return false;
                 }
             default :
-                assert false;
                 return false;
         }
     }
@@ -184,18 +181,20 @@ public class Interval {
      * @return
      */
     public boolean intersectsWith(Interval interval) {
+        boolean result = false;
         if (this.minimum == interval.maximum) {
             switch (this.opening) {
                 case BOTH_OPENED :
                 case LEFT_OPENED :
-                    return false;
+                    break;
                 case RIGHT_OPENED :
                 case UNOPENED :
-                    return interval.opening == Opening.LEFT_OPENED || interval.opening == Opening.UNOPENED;
+                    result = interval.opening == Opening.LEFT_OPENED || interval.opening == Opening.UNOPENED;
+                    break;
                 default :
-                    assert false;
-                    return false;
+                    break;
             }
+
         }
         if (this.maximum == interval.minimum) {
             switch (this.opening) {
@@ -206,7 +205,6 @@ public class Interval {
                 case UNOPENED :
                     return interval.opening == Opening.RIGHT_OPENED || interval.opening == Opening.UNOPENED;
                 default :
-                    assert false;
                     return false;
             }
         }
