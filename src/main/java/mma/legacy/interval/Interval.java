@@ -1,26 +1,26 @@
 package mma.legacy.interval;
 
 /**
- * Clase para el ejemplo de trabajo con Legacy
- * 
- * @author Agustin Controla operaciones sobre intervalos que pudeen ser abiertos o cerrados
+ * Clase que controla operaciones sobre intervalos que pudeen ser abiertos o cerrados.
+ *
+ * @author Giedre & Iker
  */
 public class Interval {
 
-    private double maximum; // número entero que indica el limite superior del intervalo
-    private double minimum; // número entero que indica el limite superior del intervalo
-    private Opening opening; // Valor booleano que indica si el intervalo es abierto o cerrado
+    private double maximum;
+    private double minimum;
+    private Opening opening;
 
 
     /**
-     * Constructor de la clase
-     * 
+     * Constructor de la clase.
+     *
      * @param minimum
-     *            del intervalo.
+     *            se refiere al mínimo del intervalo.
      * @param maximum
-     *            del intervalo.
+     *            se refiere al mínimo del intervalo.
      * @param opening
-     *            Todos los parámetros pueden ser nulos
+     *            define el tipo de apertura posible de un intervalo.
      */
     public Interval(double minimum, double maximum, Opening opening) {
         this.minimum = minimum;
@@ -37,9 +37,12 @@ public class Interval {
     }
 
 
-    /*
-     * Este método mira si un número está dentro de un determiando intervalo
-     * 
+    /**
+     * Comprueba si un valor concreto esta dentro o no de la apertura definida en opening.
+     *
+     * @param value
+     *            indica que se desea verificar si esta o no incluído dentro del intervalo.
+     * @return valor booleano indicando si esta o no dentro del intervalo definido en opening.
      */
     public boolean includes(double value) {
         System.out.print("Entro en el método");
@@ -53,7 +56,6 @@ public class Interval {
             case UNOPENED :
                 return this.minimum <= value && value <= this.maximum;
             default :
-                assert false;
                 return false;
         }
     }
@@ -61,9 +63,10 @@ public class Interval {
 
     /**
      * Este método calcula si un número está dentro de un intervalo
-     * 
-     * @param interval
-     * @return
+     *
+     * @param interval,
+     *            intervalo sobre el que se calculara si el número está dentro o no.
+     * @return valor booleano indicando si esta o no dentro del intervalo definido en opening.
      */
     public boolean includes(Interval interval) {
         boolean minimumIncluded = this.includes(interval.minimum);
@@ -142,12 +145,12 @@ public class Interval {
 
 
     /**
-     * Este método calcula el ancho de un intervalo
-     * 
-     * @param interval
+     * Este método calcula el ancho de un intervalo.
+     *
+     * @param interval,
+     *            intervalo sobre el que se calculara si es el ancho de un intervalo.
      * @return
      */
-
     public boolean intersectsWith(Interval interval) {
         if (this.minimum == interval.maximum) {
             switch (this.opening) {
@@ -180,8 +183,8 @@ public class Interval {
 
 
     /**
-     * Este método calcula la división entre 2 de la suma de los límites del intervalo
-     * 
+     * Este método calcula el punto medio de un intervalo.
+     *
      * @return devuelve el punto medio.
      */
     public double midPoint() {
@@ -194,5 +197,4 @@ public class Interval {
         // TODO
         return null;
     }
-
 }

@@ -1,10 +1,9 @@
 package mma.legacy.interval;
 
 /**
- * Esta clase abstracta se ha creado por comodidad. Crea automáticamente intervalos
- * 
- * @author Agustin
+ * Clase que implementa el patrón de diseño Factory de Interval.
  *
+ * @author Giedre & Iker
  */
 public class IntervalFactory {
 

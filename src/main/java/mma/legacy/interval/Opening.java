@@ -1,10 +1,9 @@
 package mma.legacy.interval;
 
 /**
- * Esta clase se ha creado para facilitar la creación de los tipos de intervalos: abierto y cerrado
+ * Enumeration que contiene todas las aperturas posible de un intervalo.
  *
- * @author Agustin
- *
+ * @author Giedre & Iker
  */
 public enum Opening {
     BOTH_OPENED,
