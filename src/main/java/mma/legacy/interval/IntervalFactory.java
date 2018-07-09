@@ -1,13 +1,15 @@
 package mma.legacy.interval;
 
+
 /**
- * Clase que implementa el patrón de diseño Factory de Interval.
+ * Esta clase abstracta se ha creado por comodidad. 
+ * Crea automáticamente intervalos
+ * @author Agustin
  *
- * @author Giedre & Iker
  */
 public class IntervalFactory {
 
-    public static Interval getInterval(double minimum, double maximum, Opening opening) {
-        return new Interval(minimum, maximum, opening);
-    }
+	public static Interval getInterval(double minimum, double maximum, Opening opening) {
+		return new Interval(minimum, maximum, opening);
+	}
 }
