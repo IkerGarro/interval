@@ -1,7 +1,7 @@
 package mma.legacy.interval;
 
 /**
- * Controla operaciones sobre intervalos que pudeen ser abiertos o cerrados
+ * Checks for Open/Closed intervals.
  */
 class Interval {
 
@@ -15,7 +15,7 @@ class Interval {
 
     /**
      * Constructor.
-     * 
+     *
      * @param minimum
      *            the lowest interval value.
      * @param maximum
@@ -32,26 +32,27 @@ class Interval {
 
     @Override
     public boolean equals(Object obj) {
+        boolean result = true;
         if (this == obj) {
-            return true;
+            result = true;
         }
         if (obj == null) {
-            return false;
+            result = false;
         }
         if (this.getClass() != obj.getClass()) {
-            return false;
+            result = false;
         }
         Interval other = (Interval) obj;
         if (Double.doubleToLongBits(this.maximum) != Double.doubleToLongBits(other.maximum)) {
-            return false;
+            result = false;
         }
         if (Double.doubleToLongBits(this.minimum) != Double.doubleToLongBits(other.minimum)) {
-            return false;
+            result = false;
         }
         if (this.opening != other.opening) {
-            return false;
+            result = false;
         }
-        return true;
+        return result;
     }
 
 
@@ -83,7 +84,6 @@ class Interval {
             case UNOPENED :
                 return this.minimum <= value && value <= this.maximum;
             default :
-                assert false;
                 return false;
         }
     }
@@ -111,7 +111,6 @@ class Interval {
                     case UNOPENED :
                         return (minimumIncluded) && (maximumIncluded);
                     default :
-                        assert false;
                         return false;
                 }
             case LEFT_OPENED :
@@ -127,7 +126,6 @@ class Interval {
                     case UNOPENED :
                         return (minimumIncluded) && (maximumIncluded || this.maximum == interval.maximum);
                     default :
-                        assert false;
                         return false;
                 }
             case RIGHT_OPENED :
@@ -143,7 +141,6 @@ class Interval {
                     case UNOPENED :
                         return (minimumIncluded || this.minimum == interval.minimum) && (maximumIncluded);
                     default :
-                        assert false;
                         return false;
                 }
             case UNOPENED :
@@ -161,11 +158,9 @@ class Interval {
                         return (minimumIncluded || this.minimum == interval.minimum)
                                 && (maximumIncluded || this.maximum == interval.maximum);
                     default :
-                        assert false;
                         return false;
                 }
             default :
-                assert false;
                 return false;
         }
     }
@@ -188,7 +183,6 @@ class Interval {
                 case UNOPENED :
                     return interval.opening == Opening.LEFT_OPENED || interval.opening == Opening.UNOPENED;
                 default :
-                    assert false;
                     return false;
             }
         }
@@ -201,7 +195,6 @@ class Interval {
                 case UNOPENED :
                     return interval.opening == Opening.RIGHT_OPENED || interval.opening == Opening.UNOPENED;
                 default :
-                    assert false;
                     return false;
             }
         }
@@ -210,7 +203,7 @@ class Interval {
 
 
     /**
-     * Este método calcula la división entre 2 de la suma de los límites del intervalo
+     * This method calculates the mean of maximun and minimum.
      *
      * @return
      */
