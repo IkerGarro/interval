@@ -1,8 +1,8 @@
 package mma.legacy.interval;
 
 /**
- * Esta clase se ha creado para facilitar la creación de los tipos de intervalos: abierto y cerrado
- * 
+ * Enumeration que define el tipo de intervalo: abierto y cerrado.
+ *
  * @author Agustin
  *
  */

@@ -1,9 +1,9 @@
 package mma.legacy.interval;
 
 /**
- * Clase para el ejemplo de trabajo con Legacy
- * 
- * @author Agustin Controla operaciones sobre intervalos que pudeen ser abiertos o cerrados
+ * Controla operaciones sobre intervalos que pudeen ser abiertos o cerrados
+ *
+ * @author Agustin
  */
 public class Interval {
 
@@ -14,7 +14,7 @@ public class Interval {
 
     /**
      * Constructor de la clase
-     * 
+     *
      * @param minimum
      * @param maximum
      * @param opening
@@ -37,7 +37,7 @@ public class Interval {
 
     /*
      * Este método mira si un número está dentro de un determiando intervalo
-     * 
+     *
      */
     public boolean includes(double value) {
         System.out.print("Entro en el método");
@@ -59,7 +59,7 @@ public class Interval {
 
     /**
      * Este método calcula si un número está dentro de un intervalo
-     * 
+     *
      * @param interval
      * @return
      */
@@ -141,7 +141,7 @@ public class Interval {
 
     /**
      * Este método calcula el ancho de un intervalo
-     * 
+     *
      * @param interval
      * @return
      */
@@ -179,7 +179,7 @@ public class Interval {
 
     /**
      * Este método calcula la división entre 2 de la suma de los límites del intervalo
-     * 
+     *
      * @return
      */
     public double midPoint() {
