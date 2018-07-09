@@ -2,45 +2,77 @@ package mma.legacy.interval;
 
 /**
  * Controla operaciones sobre intervalos que pudeen ser abiertos o cerrados
- *
- * @author Agustin
  */
-public class Interval {
+class Interval {
 
-    private double maximum; // número entero que indica el limite superior del intervalo
-    private double minimum; // número entero que indica el limite superior del intervalo
-    private Opening opening; // Valor booleano que indica si el intervalo es abierto o cerrado
+    // the highest interval value.
+    private double maximum;
+    // the lowest interval value.
+    private double minimum;
+    // refers to the interval opening type (may be open/close)
+    private Opening opening;
 
 
     /**
-     * Constructor de la clase
-     *
+     * Constructor.
+     * 
      * @param minimum
+     *            the lowest interval value.
      * @param maximum
+     *            the highest interval value.
      * @param opening
-     *            Todos los parámetros pueden ser nulos
+     *            refers to the interval opening type (may be open/close)
      */
-    public Interval(double minimum, double maximum, Opening opening) {
+    Interval(double minimum, double maximum, Opening opening) {
         this.minimum = minimum;
         this.maximum = maximum;
         this.opening = opening;
-        System.out.println("Objeto creado");
     }
 
 
     @Override
-    public boolean equals(Object object) {
-        // TODO
-        return false;
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (this.getClass() != obj.getClass()) {
+            return false;
+        }
+        Interval other = (Interval) obj;
+        if (Double.doubleToLongBits(this.maximum) != Double.doubleToLongBits(other.maximum)) {
+            return false;
+        }
+        if (Double.doubleToLongBits(this.minimum) != Double.doubleToLongBits(other.minimum)) {
+            return false;
+        }
+        if (this.opening != other.opening) {
+            return false;
+        }
+        return true;
     }
 
 
-    /*
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        long temp;
+        temp = Double.doubleToLongBits(this.maximum);
+        result = prime * result + (int) (temp ^ (temp >>> 32));
+        temp = Double.doubleToLongBits(this.minimum);
+        result = prime * result + (int) (temp ^ (temp >>> 32));
+        result = prime * result + ((this.opening == null) ? 0 : this.opening.hashCode());
+        return result;
+    }
+
+
+    /**
      * Este método mira si un número está dentro de un determiando intervalo
-     *
      */
     public boolean includes(double value) {
-        System.out.print("Entro en el método");
         switch (this.opening) {
             case BOTH_OPENED :
                 return this.minimum < value && value < this.maximum;
@@ -189,8 +221,6 @@ public class Interval {
 
     @Override
     public String toString() {
-        // TODO
-        return null;
+        return "Interval [maximum=" + this.maximum + ", minimum=" + this.minimum + ", opening=" + this.opening + "]";
     }
-
 }

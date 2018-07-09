@@ -1,10 +1,7 @@
 package mma.legacy.interval;
 
 /**
- * Enumeration que define el tipo de intervalo: abierto y cerrado.
- *
- * @author Agustin
- *
+ * Opening contains the different types of opening that an interval may have.
  */
 public enum Opening {
     BOTH_OPENED,
